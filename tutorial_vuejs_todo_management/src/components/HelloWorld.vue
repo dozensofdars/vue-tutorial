@@ -10,7 +10,8 @@
     <div class="task-list">
       <label class="task-list__item"
              v-for="todo in todos"
-             v-bind:class="{ 'task-list__item--checked': todo.done }">
+             :class="{ 'task-list__item--checked': todo.done }"
+             :key="todo.id">
         <input type="checkbox" v-model="todo.done">
         <input type="checkbox" v-model="todo.editing">
         <input v-if="todo.editing" type="text" v-model="todo.text" @keyup.enter="todo.editing = !todo.editing">
@@ -27,19 +28,21 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       todos: [
-        {text: "vue-router", done: false, editing: false},
-        {text: 'vuex', done: false, editing: false},
-        {text: 'vue-loader', done: false, editing: false},
-        {text: 'awesome-vue', done: true, editing: false},
+        {id: 1, text: "vue-router", done: false, editing: false},
+        {id: 2, text: 'vuex', done: false, editing: false},
+        {id: 3, text: 'vue-loader', done: false, editing: false},
+        {id: 4, text: 'awesome-vue', done: true, editing: false},
       ],
-      newToDo: ""
+      newToDo: "",
+      idCount: 4
     }
   },
   methods: {
     addToDo: function(event) {
       let text = this.newToDo && this.newToDo.trim()
       if (!text) return
-      this.todos.push({text: text, done: false, editing: false})
+      const id = ++this.idCount
+      this.todos.push({id: id, text: text, done: false, editing: false})
       this.newToDo = ""
     },
     removeToDo: function(event) {
