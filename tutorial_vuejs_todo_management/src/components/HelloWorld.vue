@@ -23,9 +23,9 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       todos: [
         {text: "vue-router", done: false},
-        {text : 'vuex', done: false},
-        {text : 'vue-loader', done: false},
-        {text : 'awesome-vue', done: true },
+        {text: 'vuex', done: false},
+        {text: 'vue-loader', done: false},
+        {text: 'awesome-vue', done: true },
       ],
       newToDo: ""
     }
