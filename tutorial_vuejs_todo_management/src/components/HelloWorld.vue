@@ -3,7 +3,7 @@
     {{ msg }}
     <form>
       <button @click="addToDo()">ADD TASK</button>
-      <button>DELETE FINISHED TASKS</button>
+      <button @click="removeToDo()">DELETE FINISHED TASKS</button>
       <p>input: <input type="text" v-model="newToDo"></p>
       <p>task: {{ newToDo }}</p>
     </form>
@@ -36,6 +36,9 @@ export default {
       if (!text) return
       this.todos.push({text: text, done: false})
       this.newToDo = ""
+    },
+    removeToDo: function(event) {
+      this.todos = this.todos.filter(todo => !todo.done)
     },
   }
 }
