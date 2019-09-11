@@ -2,7 +2,7 @@
   <div>
     {{ msg }}
     <form>
-      <button>ADD TASK</button>
+      <button v-on:click="addToDo()">ADD TASK</button>
       <button>DELETE FINISHED TASKS</button>
       <p>input: <input type="text" v-model="newToDo"></p>
       <p>task: {{ newToDo }}</p>
@@ -29,6 +29,14 @@ export default {
       ],
       newToDo: ""
     }
+  },
+  methods: {
+    addToDo: function(event) {
+      let text = this.newToDo && this.newToDo.trim()
+      if (!text) return
+      this.todos.push({text: text, done: false})
+      this.newToDo = ""
+    },
   }
 }
 </script>
