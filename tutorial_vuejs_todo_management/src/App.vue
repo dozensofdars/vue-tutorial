@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <h1>ToDo Management.</h1>
+    <hr>
     <router-view/>
   </div>
 </template>
